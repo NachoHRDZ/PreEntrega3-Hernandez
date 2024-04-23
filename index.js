@@ -16,13 +16,13 @@ const productos = [
 // Variable para almacenar el cambio total
 let cambioTotal = 0;
 
-// Función para capturar la cantidad de dinero que tiene el usuario
+// cantidad de dinero que tiene el usuario
 const capturarDineroUsuario = () => {
     const dineroUsuario = parseFloat(prompt("Por favor, ingresa la cantidad de dinero que tienes (en pesos):"));
     return isNaN(dineroUsuario) || dineroUsuario <= 0 ? null : dineroUsuario;
 };
 
-// Función para mostrar la lista de productos disponibles
+// lista de productos disponibles
 const mostrarProductos = () => {
     let listaProductos = "Productos disponibles:\n";
     productos.forEach(producto => {
@@ -55,22 +55,22 @@ const comprarProducto = (dineroUsuario) => {
     }
 };
 
-// Función para almacenar la lista de productos en el almacenamiento local
+
 const almacenarProductos = () => {
     localStorage.setItem('productos', JSON.stringify(productos));
 };
 
-// Función para recuperar la lista de productos del almacenamiento local
+
 const recuperarProductos = () => {
     return JSON.parse(localStorage.getItem('productos')) || [];
 };
 
-// Evento que se ejecuta cuando el DOM se ha cargado completamente
+
 document.addEventListener("DOMContentLoaded", () => {
-    // Almacenar los productos en el almacenamiento local
+
     almacenarProductos();
 
-    // Mostrar lista de productos disponibles en el DOM
+    
     const listaProductos = document.getElementById("listaProductos");
     const productos = recuperarProductos();
     productos.forEach(producto => {
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         listaProductos.appendChild(itemProducto);
     });
 
-    // Evento de clic en el botón de inicio
+    
     document.getElementById("startButton").addEventListener("click", () => {
         const nombreUsuario = prompt("¡Bienvenido a la Máquina Expendedora de Dulces! Por favor, introduce tu nombre:");
         const dineroUsuario = capturarDineroUsuario();
